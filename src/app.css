@@ -1,0 +1,97 @@
+@import 'tailwindcss';
+@import '../node_modules/@fontsource-variable/recursive/full.css';
+
+@theme {
+	--font-sans: Recursive Variable, ui-sans-serif, system-ui, sans-serif;
+
+	--font-mono: Recursive Variable, ui-monospace, monospace;
+	--font-mono--font-variation-settings: 'MONO' 1;
+
+	--font-serif: Recursive Variable, ui-serif, serif;
+	--font-serif--font-variation-settings: 'CASL' 0.5;
+}
+
+@utility page-section {
+	@apply rounded-sm border border-slate-600 bg-slate-200 p-4 shadow-xs;
+}
+
+@utility alert-raw {
+	@apply m-2 flex items-center gap-2 rounded border border-[var(--alert-raw-200)] bg-[var(--alert-raw-100)] p-2 text-[var(--alert-raw-800)];
+	:is(& :any-link) {
+		@apply font-semibold text-[var(--alert-raw-900)] underline;
+	}
+}
+
+@layer components {
+	.btn {
+		@apply cursor-pointer rounded-sm border border-slate-600 bg-slate-300 px-2 py-1 leading-none hover:not-disabled:bg-slate-200 focus:bg-slate-200 disabled:cursor-auto disabled:bg-slate-100 disabled:text-gray-400;
+	}
+
+	.input {
+		@apply rounded-sm border border-slate-600 bg-slate-100 px-2 py-1 leading-none hover:bg-slate-50 focus:bg-slate-50;
+	}
+
+	.link {
+		@apply text-blue-600 hover:underline focus:underline;
+	}
+
+	.icon {
+		@apply h-[1em] w-[1em] flex-none;
+	}
+
+	.alert-primary {
+		--alert-raw-100: var(--color-blue-100);
+		--alert-raw-200: var(--color-blue-200);
+		--alert-raw-800: var(--color-blue-800);
+		--alert-raw-900: var(--color-blue-900);
+		@apply alert-raw;
+	}
+
+	.alert-success {
+		--alert-raw-100: var(--color-green-100);
+		--alert-raw-200: var(--color-green-200);
+		--alert-raw-800: var(--color-green-800);
+		--alert-raw-900: var(--color-green-900);
+		@apply alert-raw;
+	}
+
+	.alert-danger {
+		--alert-raw-100: var(--color-red-100);
+		--alert-raw-200: var(--color-red-200);
+		--alert-raw-800: var(--color-red-800);
+		--alert-raw-900: var(--color-red-900);
+		@apply alert-raw;
+	}
+
+	.alert-warning {
+		--alert-raw-100: var(--color-yellow-100);
+		--alert-raw-200: var(--color-yellow-200);
+		--alert-raw-800: var(--color-yellow-800);
+		--alert-raw-900: var(--color-yellow-900);
+		@apply alert-raw;
+	}
+
+	.alert-info {
+		--alert-raw-100: var(--color-teal-100);
+		--alert-raw-200: var(--color-teal-200);
+		--alert-raw-800: var(--color-teal-800);
+		--alert-raw-900: var(--color-teal-900);
+		@apply alert-raw;
+	}
+
+	.alert-secondary {
+		--alert-raw-100: var(--color-gray-100);
+		--alert-raw-200: var(--color-gray-200);
+		--alert-raw-800: var(--color-gray-800);
+		--alert-raw-900: var(--color-gray-900);
+		@apply alert-raw;
+	}
+}
+
+@layer base {
+	html,
+	body {
+		overscroll-behavior: none;
+		background: var(--color-gray-100);
+	}
+}

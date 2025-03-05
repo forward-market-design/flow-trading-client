@@ -1,0 +1,174 @@
+{
+	"products": {
+		"A": {
+			"kind": "SIMPLE",
+			"from": "2030-01-01T00:00:00Z",
+			"thru": "2030-01-01T06:00:00Z"
+		},
+		"B": {
+			"kind": "SIMPLE",
+			"from": "2030-01-01T06:00:00Z",
+			"thru": "2030-01-01T12:00:00Z"
+		},
+		"C": {
+			"kind": "SIMPLE",
+			"from": "2030-01-01T12:00:00Z",
+			"thru": "2030-01-01T18:00:00Z"
+		},
+		"D": {
+			"kind": "SIMPLE",
+			"from": "2030-01-01T18:00:00Z",
+			"thru": "2030-01-02T00:00:00Z"
+		}
+	},
+	"bidders": {
+		"Alice LSE": {
+			"auths": {
+				"order": {
+					"portfolio": {
+						"A": 1.0,
+						"B": 1.0,
+						"C": 1.0,
+						"D": 1.0
+					},
+					"data": {
+						"min_rate": 0,
+						"max_rate": null
+					}
+				}
+			},
+			"costs": [
+				{
+					"group": {
+						"order": 1.0
+					},
+					"data": [
+						{
+							"rate": 0,
+							"price": 10
+						},
+						{
+							"rate": 5,
+							"price": 5
+						}
+					]
+				}
+			]
+		},
+		"Bob LSE": {
+			"auths": {
+				"order": {
+					"portfolio": {
+						"A": 0.5,
+						"B": 1.5,
+						"C": 1.5,
+						"D": 0.5
+					},
+					"data": {
+						"min_rate": 0,
+						"max_rate": null
+					}
+				}
+			},
+			"costs": [
+				{
+					"group": {
+						"order": 1.0
+					},
+					"data": [
+						{
+							"rate": 0,
+							"price": 10
+						},
+						{
+							"rate": 5,
+							"price": 5
+						}
+					]
+				}
+			]
+		},
+		"Carol Generator": {
+			"auths": {
+				"A": {
+					"portfolio": {
+						"A": 1.0
+					},
+					"data": {
+						"min_rate": null,
+						"max_rate": 0
+					}
+				},
+				"B": {
+					"portfolio": {
+						"B": 1.0
+					},
+					"data": {
+						"min_rate": null,
+						"max_rate": 0
+					}
+				},
+				"C": {
+					"portfolio": {
+						"C": 1.0
+					},
+					"data": {
+						"min_rate": null,
+						"max_rate": 0
+					}
+				},
+				"D": {
+					"portfolio": {
+						"D": 1.0
+					},
+					"data": {
+						"min_rate": null,
+						"max_rate": 0
+					}
+				}
+			},
+			"costs": [
+				{
+					"group": {
+						"A": 1.0
+					},
+					"data": {
+						"min_rate": -5,
+						"max_rate": 0,
+						"price": 1
+					}
+				},
+				{
+					"group": {
+						"B": 1.0
+					},
+					"data": {
+						"min_rate": -5,
+						"max_rate": 0,
+						"price": 1
+					}
+				},
+				{
+					"group": {
+						"C": 1.0
+					},
+					"data": {
+						"min_rate": -5,
+						"max_rate": 0,
+						"price": 1
+					}
+				},
+				{
+					"group": {
+						"D": 1.0
+					},
+					"data": {
+						"min_rate": -5,
+						"max_rate": 0,
+						"price": 1
+					}
+				}
+			]
+		}
+	}
+}

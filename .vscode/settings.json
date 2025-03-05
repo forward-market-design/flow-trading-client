@@ -1,0 +1,19 @@
+{
+	"files.associations": {
+		// Use the Tailwind replacement for the CSS intellisense
+		"*.css": "tailwindcss"
+	},
+	"editor.quickSuggestions": {
+		// This is a recommended Tailwind setting
+		"strings": true
+	},
+
+	// Force the appropriate Prettier plugin
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+
+	// Use tabs for indentation, like a civilized person
+	"editor.tabSize": 2,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"svelte.plugin.svelte.defaultScriptLanguage": "ts"
+}
