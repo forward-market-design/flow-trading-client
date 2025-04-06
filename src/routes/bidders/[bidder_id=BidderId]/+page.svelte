@@ -1,8 +1,20 @@
 <script lang="ts">
-	import { AuthRecord, CostRecord } from '$lib/api/types';
+	import { AuthId, AuthRecord, CostRecord, SubmissionOutcome } from '$lib/api/types';
+	import { onMount } from 'svelte';
 	import type { PageProps } from './$types';
+	import { Api, API_URL } from '$lib/api';
+	import { SvelteMap } from 'svelte/reactivity';
 
 	let { data }: PageProps = $props();
+	const client = $derived(new Api(API_URL, fetch).asBidder(data.token, data.bidder!.id));
+
+	const outcomes = $state([] as SubmissionOutcome[]);
+
+	let streamOk = $state(false);
+	onMount(async () => {
+		streamOk = true;
+		await client.streamOutcomes((data) => outcomes.push(data)).finally(() => (streamOk = false));
+	});
 </script>
 
 {#snippet error(data: any)}
@@ -39,6 +51,11 @@
 		{/await}
 		<span class="text-xs">(As of {data.asOf.toLocaleString()})</span>
 	</h2>
+</section>
+
+<section>
+	<h2 class="font-bold">Results</h2>
+	<textarea>{JSON.stringify(outcomes.at(-1))}</textarea>
 </section>
 
 {#await data.submission}

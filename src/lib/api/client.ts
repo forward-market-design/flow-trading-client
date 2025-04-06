@@ -20,6 +20,7 @@ import {
 	ProductOutcome,
 	ProductPagination,
 	ProductRecord,
+	SubmissionOutcome,
 	type AuthId,
 	type BidderId,
 	type CostId,
@@ -353,6 +354,14 @@ export class BidderApi extends Api {
 	asCost(cost: CostId) {
 		return new CostApi(cost, this);
 	}
+
+	/**
+	 * Stream outcomes from the API server, executing the provided callback for
+	 * each message.
+	 */
+	streamOutcomes(callback: (data: SubmissionOutcome) => void) {
+		return this.$stream(`/v0/outcomes/bidders/${this.bidder}`, SubmissionOutcome, callback);
+	}
 }
 
 /**
@@ -411,14 +420,6 @@ export class AuthApi extends BidderApi {
 		return this.$request(this.$url(`/v0/auths/${this.auth}/outcomes`, more), 'GET').then(
 			(response) => AuthApi.$parse(response, DateTimePagination(AuthOutcome))
 		);
-	}
-
-	/**
-	 * Stream outcomes from the API server, executing the provided callback for
-	 * each message.
-	 */
-	streamOutcomes(callback: (data: AuthOutcome) => void) {
-		return this.$stream(`/v0/outcomes/auths/${this.auth}`, AuthOutcome, callback);
 	}
 }
 
